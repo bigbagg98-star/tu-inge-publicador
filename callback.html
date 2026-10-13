@@ -5,6 +5,8 @@
 <p style="color:#9aa6b5">Todo ocurre en tu navegador; el código no se envía a ningún servidor. / Everything happens in your browser; the code is not sent anywhere.</p>
 <script>
 var p=new URLSearchParams(location.search),c=p.get("code"),e=p.get("error_description")||p.get("error"),m=document.getElementById("m");
+var st=p.get("state")||"",lp=/^local(\d{2,5})_/.exec(st);
+if(lp&&(c||e)){location.replace("http://127.0.0.1:"+lp[1]+"/cb"+location.search)}
 if(c){m.textContent="Copia este c\u00f3digo y p\u00e9galo en el publicador / Copy this code into the publisher:";var s=document.getElementById("c");s.textContent=c;s.style.display="block";var b=document.getElementById("b");b.style.display="inline-block";b.onclick=function(){navigator.clipboard.writeText(c)}}
 else m.textContent=e?("Error: "+e):"No hay par\u00e1metro code en la URL. / No code parameter in the URL.";
 </script><footer>Tu Inge de Confianza · Contacto / Contact: <a href="mailto:bigbagg98@gmail.com">bigbagg98@gmail.com</a></footer></main></body></html>
